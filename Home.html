@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Previews</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        /* Existing CSS styles */
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .swiper-slide {
+            position: relative;
+            text-align: center;
+            background: #fff;
+        }
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+        .text-overlay h2 {
+            font-size: 2em;
+            margin: 0;
+        }
+        .text-overlay p {
+            font-size: 1.2em;
+            margin: 0;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: white;
+            width: 44px;
+            height: 44px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .swiper-button-next {
+            right: 10px;
+        }
+        .swiper-button-prev {
+            left: 10px;
+        }
+        .swiper-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .swiper-pagination-bullet {
+            margin: 0 3px;
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .swiper-pagination-bullet-active {
+            background: #fff;
+        }
+        @media screen and (max-width: 768px) {
+            .text-overlay h2 {
+                font-size: 1.5em;
+            }
+            .text-overlay p {
+                font-size: 1em;
+            }
+            .swiper-button-next,
+            .swiper-button-prev {
+                width: 30px;
+                height: 30px;
+            }
+            .swiper-pagination {
+                max-width: 100%;
+                padding: 0 10px;
+                box-sizing: border-box;
+            }
+        }
+        .article {
+            margin-bottom: 20px;
+        }
+        .article img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .article .abstract {
+            background-color: #dbd4d4;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="homepage-body">
+    <div class="loading-container">
+        <img src="Images/Anguria.png" alt="Loading" class="loading">
+    </div>
+    <nav>
+        <img src="Images/Logo.jpg" alt="Logo">
+    </nav>
+    <nav class="menu">
+        <div class="nav-item"><a href="Home.html">Home</a></div>
+        <div class="nav-item"><a href="chisiamo.html">Chi Siamo</a></div>
+        <div class="nav-item"><a href="comunicazioni.html">Comunicazioni</a></div>
+        <div class="nav-item"><a href="articles.html">Articoli</a></div>
+        <div class="nav-item"><a href="map.html">Mappa</a></div>
+    </nav>
+    <div class="container-xl">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide image-container">
+                <a href="Home.html">
+                    <img src="Images/background.png" alt="slider1">
+                    <div class="text-overlay">
+                        <h2>Studentə Unitə per la Palestina</h2>
+                        <p>From the river to the sea, Palestine will be free</p>
+                    </div>
+                </a>
+            </div>
+            <div class="swiper-slide image-container">
+                <a href="chisiamo.html">
+                <img src="Images/slider2.webp" alt="slider2">
+                <div class="text-overlay">
+                    <h2>Chi Siamo</h2>
+                    <p>I nostri intenti, perché ci battiamo e come mai la Palestina è un esempio.</p>
+                </div>
+            </a>
+            </div>
+            <div class="swiper-slide image-container">
+                <a href="comunicazioni.html">
+                <img src="Images/slider3.webp" alt="slider3">
+                <div class="text-overlay">
+                    <h2>Comunicazioni</h2>
+                    <p>Eventi, comunicazioni verso l'esterno e mozioni</p>
+                </div>
+            </a>
+            </div>
+            <div class="swiper-slide image-container">
+                <a href="articles.html">
+                <img src="Images/slider4.png" alt="slider4">
+                <div class="text-overlay">
+                    <h2>Articoli</h2>
+                    <p>I nostri articoli e le nostre ricerche, qui disponibili per tuttə</p>
+                </div>
+            </a>
+            </div>
+            <div class="swiper-slide image-container">
+                <a href="mappe.html">
+                <img src="Images/slider5.jpg" alt="slider5">
+                <div class="text-overlay">
+                    <h2>Mappe</h2>
+                    <p>Mappe interattive sulla Palestina, sulle occupazioni, sul mondo</p>
+                </div>
+            </a>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <section class="articles" id="articles">
+        <!-- Articles will be inserted here by JavaScript -->
+    </section>
+    <footer>
+        <p>"Bellum tibi Palestina" Unive finanzia il genocidio</p>
+    </footer>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('articles.json')
+                .then(response => response.json())
+                .then(data => {
+                    data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    const latestArticles = data.slice(0, 4);
+                    const articlesContainer = document.getElementById('articles');
+                    latestArticles.forEach(article => {
+                        const articleElement = document.createElement('div');
+                        articleElement.className = 'article';
+                        articleElement.innerHTML = `
+                            <a href="${article.link}">
+                                <img src="${article.image}" alt="${article.title}">
+                            </a>
+                            <div class="abstract">
+                                <h3>${article.title}</h3>
+                                <p>${article.description}</p>
+                            </div>
+                        `;
+                        articlesContainer.appendChild(articleElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching articles:', error));
+        });
+    </script>
+</body>
+</html>

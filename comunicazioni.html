@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article Previews</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Stile per l'immagine di sfondo */
+/* General styles remain unchanged */
+
+.homepage-body {
+    background-image: url('Images/sughero.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #fff; /* White text color */
+}
+
+.article-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns on larger screens */
+    gap: 20px; /* Gap between boxes */
+    padding: 20px;
+}
+
+.article-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out; /* Shadow transition */
+}
+
+.article-box:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Shadow on hover */
+}
+
+.article-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Image transition */
+}
+
+.article-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* White semi-transparent overlay */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none; /* Prevent interaction */
+}
+
+.article-details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, background-color 0.5s ease-in-out; /* Opacity and background transition */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.article-box:hover .article-details {
+    opacity: 1;
+    background-color: white; /* Background color on hover */
+}
+
+.article-details-content {
+    text-align: center;
+    color: black; /* Text color black */
+    transition: color 0.5s ease-in-out; /* Text color transition */
+}
+
+.article-box:hover .article-details-content {
+    color: black; /* Ensure text color is black on hover */
+}
+
+@media screen and (max-width: 768px) {
+    .article-container {
+        grid-template-columns: 1fr; /* Single column layout on smaller screens */
+    }
+
+    .article-image {
+        width: 100%;
+        height: auto;
+        max-width: 100%; /* Ensure image does not exceed container width */
+        max-height: calc(100vh - 40px); /* Limit image height to viewport height minus padding */
+        object-fit: cover;
+    }
+}
+
+
+</style>
+</head>
+<body class="homepage-body">
+    <div class="loading-container">
+        <img src="Images/Anguria.png" alt="Loading" class="loading">
+    </div>
+<nav>
+    <img src="Images/Logo.jpg" alt="Logo">
+</nav>
+<nav class="menu">
+    <div class="nav-item">
+        <a href="Home.html">Home</a>
+    </div>
+    <div class="nav-item">
+        <a href="chisiamo.html">Chi Siamo</a>
+    </div>
+    <div class="nav-item">
+        <a href="comunicazioni.html">Comunicazioni</a>
+    </div>
+    <div class="nav-item">
+        <a href="articles.html">Articoli</a>
+    </div>
+    <div class="nav-item">
+        <a href="map.html">Mappa</a> 
+    </div>
+</nav>
+<div class="article-container" id="article-container">
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('comunicazioni.json')
+            .then(response => response.json())
+            .then(data => {
+                // Sort articles by date in descending order
+                data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                // Generate HTML for the articles
+                const articlesContainer = document.getElementById('article-container');
+                data.forEach(article => {
+                    const articleElement = document.createElement('div');
+                    articleElement.className = 'article-box';
+                    articleElement.innerHTML = `
+                        <div class="article-details">
+                            <div class="article-details-content">
+                                <div class="article-title">${article.title}</div>
+                                <div class="article-subtitle">${article.description}</div>
+                                <div class="article-date">${new Date(article.date).toLocaleDateString('it-IT', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                })}</div>
+                            </div>
+                        </div>
+                        <a href="${article.link}">
+                            <img src="${article.image}" alt="${article.title}" class="article-image">
+                        </a>
+                    `;
+                    articlesContainer.appendChild(articleElement);
+                });
+            })
+            .catch(error => console.error('Error fetching articles:', error));
+    });
+</script>
+</body>
+<footer>
+    <p>"Bellum tibi Palestina" Unive finanzia il genocidio</p>
+</footer>
+</html>
