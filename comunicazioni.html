@@ -91,6 +91,17 @@
     color: black; /* Ensure text color is black on hover */
 }
 
+.article-link {
+    margin-top: 10px;
+    font-weight: bold;
+    color: blue; /* Blue text color for link */
+    text-decoration: underline; /* Underlined text */
+}
+
+.article-box:hover .article-link {
+    color: red; /* Change color on hover */
+}
+
 @media screen and (max-width: 768px) {
     .article-container {
         grid-template-columns: 1fr; /* Single column layout on smaller screens */
@@ -104,20 +115,14 @@
         object-fit: cover;
     }
 }
-
-
 </style>
 </head>
-<body class="homepage-body">
-    <div class="loading-container">
-        <img src="Images/Anguria.png" alt="Loading" class="loading">
-    </div>
 <nav>
     <img src="Images/Logo.jpg" alt="Logo">
 </nav>
 <nav class="menu">
     <div class="nav-item">
-        <a href="Home.html">Home</a>
+        <a href="index.html">Home</a>
     </div>
     <div class="nav-item">
         <a href="chisiamo.html">Chi Siamo</a>
@@ -157,6 +162,7 @@
                                     month: 'long',
                                     day: 'numeric'
                                 })}</div>
+                                <a href="${article.link}" class="article-link">Vedi articolo</a>
                             </div>
                         </div>
                         <a href="${article.link}">
